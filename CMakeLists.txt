@@ -86,9 +86,10 @@ set(Boost_USE_MULTITHREADED ON)
 find_package(Boost
     COMPONENTS
         program_options
-        system
         thread
         filesystem
+    OPTIONAL_COMPONENTS
+        system
 )
 if (NOT Boost_FOUND)
     set(BOOST_ROOT CACHE PATH  "Location of the boost root directory" )
