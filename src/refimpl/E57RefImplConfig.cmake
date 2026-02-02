@@ -116,6 +116,16 @@ IF (E57RefImpl_LIBRARY_DEBUG AND NOT E57RefImpl_LIBRARY_RELEASE)
   SET(E57RefImpl_LIBRARIES       ${E57RefImpl_LIBRARY_DEBUG})
 ENDIF()
 
+include(CMakeFindDependencyMacro)
+find_dependency(Boost REQUIRED COMPONENTS filesystem system)
+find_dependency(XercesC REQUIRED)
+
+list(APPEND E57RefImpl_LIBRARIES
+    Boost::filesystem
+    Boost::system
+    XercesC::XercesC
+)
+
 IF (E57RefImpl_LIBRARY)
     set(E57RefImpl_LIBRARY ${E57RefImpl_LIBRARY} CACHE FILEPATH "The E57RefImpl library")
     # Remove superfluous "debug" / "optimized" keywords from
